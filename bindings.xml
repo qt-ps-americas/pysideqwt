@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+
+<typesystem package="pysideqwt">
+
+    <load-typesystem name="typesystem_widgets.xml" generate="no"/>
+    <load-typesystem name="typesystem_gui_common.xml" generate="no"/>
+    <load-typesystem name="typesystem_core_common.xml" generate="no"/>
+
+    <value-type name="QwtSeriesStore" generate="no"/>
+    <value-type name="QwtSeriesStore&lt;QPointF&gt;" generate="no"/>
+    <value-type name="QwtSeriesData&lt;QPointF&gt;" generate="no"/>
+
+    <object-type name="QwtPlotCurve">
+        <enum-type name="CurveStyle"/>
+        <enum-type name="CurveAttribute"/>
+        <enum-type name="LegendAttribute"/>
+        <enum-type name="PaintAttribute"/>
+        <enum-type name="ItemAttribute"/>
+        <enum-type name="ItemInterest"/>
+        <enum-type name="RenderHint"/>
+        <modify-function signature="setSymbol(QwtSymbol *)">
+            <modify-argument index="1">
+                <define-ownership owner="c++"/>
+            </modify-argument>
+        </modify-function>
+        <modify-function signature="setCurveFitter(QwtCurveFitter *)">
+            <modify-argument index="1">
+                <define-ownership owner="c++"/>
+            </modify-argument>
+        </modify-function>
+        <modify-function signature="setRawSamples(const double *, const double *, int  )" remove="all"/>
+        <modify-function signature="setRawSamples( const float *, const float *, int )" remove="all"/>
+        <modify-function signature="setRawSamples( const double *, int )" remove="all"/>
+        <modify-function signature="setRawSamples( const float *, int )" remove="all"/>
+        <modify-function signature="setSamples( const double *, const double *, int )" remove="all"/>
+        <modify-function signature="setSamples( const float *, const float *, int )" remove="all"/>
+        <modify-function signature="setSamples(const double *, int )" remove="all"/>
+        <modify-function signature="setSamples(const float *, int )" remove="all"/>
+        <modify-function signature="setSamples(const QVector&lt;double&gt; &amp;)" remove="all"/>
+        <modify-function signature="setSamples(const QVector&lt;float&gt; &amp;)" remove="all"/>
+        <modify-function signature="setSamples(QVector&lt;float&gt;)" remove="all"/>
+        <modify-function signature="setSamples(const QVector&lt;QPointF&gt; &amp;)" remove="all"/>
+        <add-function signature="setSamples(const QVector&lt;QPointF&gt; &amp;)">
+            <inject-code class="target" position="beginning">
+                %CPPSELF.setSamples(%1);
+            </inject-code>
+        </add-function>
+        <modify-function signature="setSamples( const QVector&lt;double&gt; &amp;, const QVector&lt;double&gt; &amp;)" remove="all"/>
+        <add-function signature="setSamples( const QVector&lt;double&gt; &amp;, const QVector&lt;double&gt; &amp;)">
+            <inject-code class="target" position="beginning">
+                %CPPSELF.setSamples(%1,%2);
+            </inject-code>
+        </add-function>
+        <modify-function signature="setSamples(QVector&lt;double&gt;)" remove="all"/>
+        <modify-function signature="setSamples(QVector&lt;float&gt;,QVector&lt;float&gt;)" remove="all"/>
+        <modify-function signature="setSamples(QVector&lt;QPointF&gt;)" remove="all"/>
+        <modify-function signature="setSamples(QVector&lt;double&gt;,QVector&lt;double&gt;)" remove="all"/>
+    </object-type>
+    <object-type name="QwtPickerMachine">
+        <enum-type name="SelectionType"/>
+        <enum-type name="Command"/>
+        <modify-function signature="transition(const QwtEventPattern &amp;,const QEvent *)" remove="all"/>
+    </object-type>
+    <object-type name="QwtPickerClickPointMachine"/>
+    <object-type name="QwtPickerClickRectMachine"/>
+    <object-type name="QwtPickerDragLineMachine"/>
+    <object-type name="QwtPickerDragPointMachine"/>
+    <object-type name="QwtPickerDragRectMachine"/>
+    <object-type name="QwtPickerPolygonMachine"/>
+    <object-type name="QwtPickerTrackerMachine"/>
+    <object-type name="QwtEventPattern">
+        <enum-type name="MousePatternCode"/>
+        <enum-type name="KeyPatternCode"/>
+    </object-type>
+    <object-type name="QwtPicker">
+        <enum-type name="RubberBand"/>
+        <enum-type name="DisplayMode"/>
+        <enum-type name="ResizeMode"/>
+        <modify-function signature="setStateMachine(QwtPickerMachine *)">
+            <modify-argument index="1">
+                <define-ownership owner="c++"/>
+            </modify-argument>
+        </modify-function>
+    </object-type>
+    <object-type name="QwtPlotCanvas">
+        <enum-type name="PaintAttribute"/>
+        <enum-type name="FocusIndicator"/>
+    </object-type>
+    <object-type name="QwtPlotLayout">
+        <enum-type name="Option" flags="Options"/>
+        <modify-function signature="activate(const QwtPlot*,QRectF,QFlags&lt;QwtPlotLayout::Option&gt;)" remove="all"/>
+        <modify-function signature="expandLineBreaks(QFlags&lt;QwtPlotLayout::Option&gt;,QRectF,int&amp;,int&amp;,int[4])const" remove="all"/>
+        <modify-function signature="alignScales(QFlags&lt;QwtPlotLayout::Option&gt;,QRectF&amp;,QRectF[4])const" remove="all"/>
+    </object-type>
+    <object-type name="QwtPlotPicker"/>
+    <object-type name="QwtPlotZoomer"/>
+    <object-type name="QwtPanner">
+        <modify-function signature="contentsMask() const" remove="all"/>
+        <modify-function signature="getAbortKey(int &amp;,QFlags&lt;Qt::KeyboardModifier&gt; &amp;) const" remove="all"/>
+        <modify-function signature="getMouseButton(Qt::MouseButton &amp;,QFlags&lt;Qt::KeyboardModifier&gt; &amp;) const" remove="all"/>
+    </object-type>
+    <object-type name="QwtPlotPanner"/>
+    <object-type name="QwtLegendData">
+        <enum-type name="Mode"/>
+        <enum-type name="Role"/>
+    </object-type>
+    <object-type name="QwtAbstractLegend">
+        <modify-function signature="updateLegend(const QVariant &amp;,const QList&lt;QwtLegendData&gt; &amp;)" remove="all"/>
+    </object-type>
+    <object-type name="QwtLegend"/>
+    <object-type name="QwtAbstractScaleDraw">
+        <enum-type name="ScaleComponent"/>
+    </object-type>
+    <object-type name="QwtScaleDraw">
+        <enum-type name="Alignment"/>
+    </object-type>
+    <object-type name="QwtPlotDict"/>
+    <object-type name="QwtPlot">
+        <enum-type name="Axis"/>
+        <enum-type name="LegendPosition"/>
+        <modify-function signature="insertLegend(QwtAbstractLegend *,QwtPlot::LegendPosition,double)">
+            <modify-argument index="1">
+                <define-ownership owner="c++"/>
+            </modify-argument>
+        </modify-function>
+        <modify-function signature="setAxisScaleEngine(int,QwtScaleEngine *)">
+            <modify-argument index="2">
+                <define-ownership owner="c++"/>
+            </modify-argument>
+        </modify-function>
+        <modify-function signature="getCanvasMarginsHint(const QwtScaleMap[],const QRectF &amp;,double &amp;,double &amp;,double &amp;,double &amp;)const" remove="all"/>
+        <modify-function signature="drawItems(QPainter *,const QRectF &amp;,const QwtScaleMap[4]) const" remove="all"/>
+    </object-type>
+    <object-type name="QwtSymbol">
+        <enum-type name="Style"/>
+        <enum-type name="CachePolicy"/>
+    </object-type>
+    <object-type name="QwtCurveFitter">
+        <enum-type name="Mode"/>
+        <modify-function signature="fitCurve(const QPolygonF &amp;) const" remove="all"/>
+    </object-type>
+    <object-type name="QwtSplineCurveFitter"/>
+    <object-type name="QwtWeedingCurveFitter"/>
+    <object-type name="QwtTransform">
+        <modify-function signature="copy() const">
+            <modify-argument index="return">
+                <define-ownership class="target" owner="target"/>
+            </modify-argument>
+        </modify-function>
+    </object-type>
+    <value-type name="QwtScaleMap"/>
+    <object-type name="QwtPlotItem">
+        <enum-type name="RttiValues"/>
+        <enum-type name="ItemAttribute"/>
+        <enum-type name="ItemInterest"/>
+        <enum-type name="RenderHint"/>
+        <modify-function signature="attach(QwtPlot *)" rename="attachToPlot"/>
+        <add-function signature="detachFromPlot()">
+            <inject-code>
+                %CPPSELF.detach();
+            </inject-code>
+        </add-function>
+        <modify-function signature="draw(QPainter *,const QwtScaleMap &amp;,const QwtScaleMap &amp;,const QRectF &amp;) const" remove="all"/>
+    </object-type>
+    <object-type name="QwtPlotMarker">
+        <enum-type name="LineStyle"/>
+    </object-type>
+    <object-type name="QwtAbstractSeriesStore">
+    </object-type>
+    <object-type name="QwtPlotShapeItem">
+        <enum-type name="PaintAttribute"/>
+        <enum-type name="LegendMode"/>
+    </object-type>
+    <object-type name="QwtPlotSeriesItem">
+    </object-type>
+    <object-type name="QwtTextLabel"/>
+    <value-type name="QwtText">
+        <enum-type name="TextFormat"/>
+        <enum-type name="PaintAttribute"/>
+        <enum-type name="LayoutAttribute"/>
+    </value-type>
+    <value-type name="QwtScaleDiv">
+        <enum-type name="TickType"/>
+        <modify-function signature="QwtScaleDiv(double,double,QList[3])" remove="all"/>
+    </value-type>
+    <object-type name="QwtScaleEngine">
+        <enum-type name="Attribute"/>
+        <modify-function signature="autoScale(int,double &amp;,double &amp;,double &amp;) const" remove="all"/>
+        <modify-function signature="divideScale(double,double,int,int,double) const" remove="all"/>
+    </object-type>
+    <object-type name="QwtScaleWidget">
+        <enum-type name="LayoutFlag"/>
+    </object-type>
+    <object-type name="QwtLinearScaleEngine"/>
+    <object-type name="QwtDateScaleEngine"/>
+    <object-type name="QwtLogScaleEngine"/>
+    <object-type name="QwtPlotGrid"/>
+    <primitive-type name="size_t"/>
+    <object-type name="QwtPlotCanvas"/>
+
+    <!-- Qwt 6.2-svn additions -->
+    <object-type name="QwtBezier"/>
+    <object-type name="QwtTextEngine"/>
+    <object-type name="QwtPlainTextEngine"/>
+    <object-type name="QwtRichTextEngine"/>
+    <object-type name="QwtSpline">
+        <enum-type name="BoundaryType"/>
+        <enum-type name="BoundaryPosition"/>
+        <enum-type name="BoundaryCondition"/>
+    </object-type>
+    <object-type name="QwtSplineBasis"/>
+    <object-type name="QwtSplineInterpolating"/>
+    <object-type name="QwtSplineG1"/>
+    <object-type name="QwtSplineC1"/>
+    <object-type name="QwtSplineC2"/>
+    <object-type name="QwtSplineCubic"/>
+    <object-type name="QwtSplineLocal"/>
+    <object-type name="QwtSplineParametrization"/>
+    <object-type name="QwtSplinePleasing"/>
+    <object-type name="QwtSplinePolynomial"/>
+
+    <object-type name="QwtPlotRescaler">
+        <enum-type name="RescalePolicy"/>
+        <enum-type name="ExpandingDirection"/>
+    </object-type>
+
+</typesystem>
