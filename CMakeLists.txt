@@ -35,9 +35,6 @@ endif()
 # Set CPP standard to C++11 minimum.
 set(CMAKE_CXX_STANDARD 11)
 
-# Because Shiboken does not support templated classes
-set(qwtaddons_library "libqwtaddons")
-
 # Find QWT library
 find_package(Qwt REQUIRED)
 
@@ -242,29 +239,6 @@ foreach(include_dir ${pyside2_include_dir})
     list(APPEND pyside2_additional_includes "${include_dir}/QtWidgets")
 endforeach()
 
-# =============================== CMake target - qwtaddons_library ===============================
-
-
-# Define the sample shared library for which we will create bindings.
-#set(${qwtaddons_library}_sources )
-#add_library(${qwtaddons_library} SHARED ${${qwtaddons_library}_sources})
-#set_property(TARGET ${qwtaddons_library} PROPERTY PREFIX "")
-
-# Needed mostly on Windows to export symbols, and create a .lib file, otherwise the binding
-# library can't link to the sample library.
-#target_compile_definitions(${qwtaddons_library} PRIVATE BINDINGS_BUILD)
-
-# Apply relevant include and link flags.
-#target_include_directories(${qwtaddons_library} PRIVATE ${QWT_INCLUDE_DIR})
-#target_include_directories(${qwtaddons_library} PRIVATE ${python_include_dir})
-#target_include_directories(${qwtaddons_library} PRIVATE ${shiboken2_generator_include_dir})
-#target_include_directories(${qwtaddons_library} PRIVATE ${pyside2_include_dir})
-#target_include_directories(${qwtaddons_library} PRIVATE ${pyside2_additional_includes})
-#target_include_directories(${qwtaddons_library} PRIVATE ${CMAKE_SOURCE_DIR})
-
-#target_link_libraries(${qwtaddons_library} PRIVATE ${QWT_LIBRARY})
-#target_link_libraries(${qwtaddons_library} PRIVATE Qt5::Widgets)
-
 # =============================== CMake target - bindings_library =============================
 
 
@@ -286,7 +260,6 @@ target_include_directories(${bindings_library} PRIVATE ${pyside2_additional_incl
 target_include_directories(${bindings_library} PRIVATE ${CMAKE_SOURCE_DIR})
 
 target_link_libraries(${bindings_library} PRIVATE ${shiboken2_module_shared_libraries})
-#target_link_libraries(${bindings_library} PRIVATE ${qwtaddons_library})
 target_link_libraries(${bindings_library} PRIVATE ${QWT_LIBRARY})
 target_link_libraries(${bindings_library} PRIVATE Qt5::Widgets)
 target_link_libraries(${bindings_library} PRIVATE ${pyside2_shared_libraries})
@@ -377,10 +350,6 @@ install(TARGETS ${bindings_library}
         LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/package/pysideqwt
         RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/package/pysideqwt
         )
-if(WIN32)
-    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${qwtaddons_library}.lib"
-        DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/package/pysideqwt")
-endif()
 
 # Qwt seems to be built with no rpath support, so to load the generated module, the framework
 # has to be copied to the same folder as the .so file. 
