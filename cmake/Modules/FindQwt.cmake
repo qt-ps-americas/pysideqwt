@@ -26,6 +26,8 @@ set(QWTMATHML_LIBRARY_NAMES qwtmathml-qt5 qwtmathml6-qt5 qwtmathml qwtmathml6 qw
 #set(QWT_PATHS
 #    "C:/Qwt-6.2.0-svn"
 #    /usr/local/qwt-6.2.0-svn
+#    "C:/Qwt-6.1.4"
+#    /usr/local/qwt-6.1.4
 #    "C:/Qwt-6.1.3"
 #    /usr/local/qwt-6.1.3
 #    /usr/lib
@@ -38,6 +40,10 @@ set(QWTMATHML_LIBRARY_NAMES qwtmathml-qt5 qwtmathml6-qt5 qwtmathml qwtmathml6 qw
 set(QWT_PATHS
     "C:/Qwt-6.2.0-svn"
     /usr/local/qwt-6.2.0-svn
+    "C:/Qwt-6.1.4"
+    /usr/local/qwt-6.1.4
+    "C:/Qwt-6.1.3"
+    /usr/local/qwt-6.1.3
     /usr/local
     /usr
     "$ENV{LIB}"
@@ -73,6 +79,10 @@ FIND_PATH(QWT_INCLUDE_DIR NAMES qwt.h PATHS
   "${_qwt_fw}/Headers"
   "C:/Qwt-6.2.0-svn/include"
   /usr/local/qwt-6.2.0-svn/include
+  "C:/Qwt-6.1.4/include"
+  /usr/local/qwt-6.1.4/include
+  "C:/Qwt-6.1.3/include"
+  /usr/local/qwt-6.1.3/include
   /usr/include
   /usr/local/include
   /usr/local/include/qt5
@@ -86,6 +96,10 @@ FIND_PATH(QWTMATHML_INCLUDE_DIR NAMES qwt_mathml_text_engine.h PATHS
   "${_qwtmathml_fw}/Headers"
   "C:/Qwt-6.2.0-svn/include"
   /usr/local/qwt-6.2.0-svn/include
+  "C:/Qwt-6.1.4/include"
+  /usr/local/qwt-6.1.4/include
+  "C:/Qwt-6.1.3/include"
+  /usr/local/qwt-6.1.3/include
   /usr/include
   /usr/local/include
   /usr/local/include/qt5

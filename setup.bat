@@ -23,7 +23,7 @@ rm -rf %BUILD_DIR%
 mkdir %BUILD_DIR%
 set CURDIR=%CD%
 cd %BUILD_DIR%
-cmake -H%SRC_DIR% -B. -DQt5_DIR=C:\Qt\Qt5.12.0\5.12.0\msvc2017_64\lib\cmake\Qt5 -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%CONFIGURATION%
+cmake -H%SRC_DIR% -B. -DQt5_DIR=C:\Qt\Qt5.12.4\5.12.4\msvc2017_64\lib\cmake\Qt5 -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=%CONFIGURATION%
 if %ERRORLEVEL% NEQ 0 goto REPORTERR
 
 set CL=/MP
