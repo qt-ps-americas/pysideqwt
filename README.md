@@ -24,7 +24,7 @@
     If you do not, you may find issues with Visual Studio headers complaining
     that your CLANG version is too old (VS2017 headers require CLang v7+)
 
-* Shiboken-generator installed.  If you built PySide2 from source, you should have this. If you used pip install PySide2, it only installs shiboken and Pyside2, not the shiboken-generator. You can find a wheels for the generator at http://download.qt.io/snapshots/ci/pyside/[Qt Version #]/latest/pyside2/. 
+* shiboken2-generator installed.  If you built PySide2 from source, you should have this. If you used pip install PySide2, it only installs shiboken2 and Pyside2, not the shiboken2-generator. You can find wheels for the generator at http://download.qt.io/snapshots/ci/pyside/QtVersion#/latest/pyside2/. Download the version appropriate for your OS and run pip install on it.  
 
 * Qwt 6.2
     * Qwt 6.2:
