@@ -25,7 +25,12 @@
     that your CLANG version is too old (VS2017 headers require CLang v7+)
 
 * shiboken2-generator installed.  If you built PySide2 from source, you should have this. If you used pip install PySide2, it only installs shiboken2 and Pyside2, not the shiboken2-generator. You can find wheels for the generator at http://download.qt.io/snapshots/ci/pyside/QtVersion#/latest/pyside2/. Download the version appropriate for your OS and run pip install on it.  
-
+	* Using the shiboken2-generator wheel has been tested for Linux and macOS only
+	* If you use the wheel, you need to set a couple of things to make sure shiboken can access shared libraries 
+		1) Add the path to the bin directory of Qt to your PATH. (For qmake access)
+		2) Create an LD_LIRBRARY_PATH enviroment variable and add path to Qt libraries to it
+		3) Create CLANG_INSTALL_DIR and set it to the include directory for clang
+		4) Make sure you have a development installation of Python, which has the include files (such as Python.h) 
 * Qwt 6.2
     * Qwt 6.2:
         * Get Qwt 6.2 by checking the code out using this subversion command line:
